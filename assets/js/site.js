@@ -298,13 +298,18 @@
        different hashes, so the path alone is not enough to tell them
        apart — the hash has to agree too, or every anchor on the current
        page lights up at once. */
-    var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    /* Compare without the extension: hosts that serve "clean URLs"
+       (Vercel, Netlify, GitHub Pages) turn /schedule.html into /schedule,
+       which would otherwise match nothing and leave no link highlighted. */
+    function key(p) { return p.replace(/\.html$/, '').replace(/^$|^index$/, 'index'); }
+
+    var here = key((location.pathname.split('/').pop() || 'index.html').toLowerCase());
     var hash = location.hash.toLowerCase();
 
     document.querySelectorAll('.nav__link, .nav-link').forEach(function (a) {
       var raw = (a.getAttribute('href') || '').toLowerCase();
       var parts = raw.split('#');
-      var path = parts[0] || here;
+      var path = key(parts[0] || here);
       var frag = parts[1] ? '#' + parts[1] : '';
 
       if (path !== here) return;
@@ -350,6 +355,38 @@
       document.fonts.ready.then(function () { moveTo(current()); });
     }
   }
+
+  /* ---------- Speaker cards -----------------------------------
+     Rendered from one place so the home page and the schedule page
+     can never fall out of step. Card layout follows the testimonial
+     pattern: portrait, fade to black, quote, name, gradient role. */
+  window.renderSpeakers = function (el) {
+    if (!el || !window.SPEAKERS) return;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    el.innerHTML = window.SPEAKERS.map(function (s) {
+      var shot = s.photo
+        ? '<img src="' + esc(s.photo) + '" alt="' + esc(s.name) + '" loading="lazy">'
+        /* no photo yet — fall back to initials rather than a broken image */
+        : '<span class="voice__initials">' +
+            esc(s.name.replace(/^Rev\.\s*/, '').split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 2)) +
+          '</span>';
+
+      return '<article class="voice">' +
+               '<div class="voice__shot">' + shot + '<span class="voice__fade"></span></div>' +
+               '<div class="voice__body">' +
+                 '<p class="voice__quote">' + esc(s.note) + '</p>' +
+                 '<p class="voice__name">&mdash; ' + esc(s.name) + '</p>' +
+                 '<p class="voice__role">' + esc(s.role) + '</p>' +
+               '</div>' +
+             '</article>';
+    }).join('');
+  };
 
   /* ---------- Scroll reveal ----------------------------------- */
   function initReveal() {

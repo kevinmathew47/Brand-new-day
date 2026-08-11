@@ -61,11 +61,28 @@ window.SCHEDULE = [
   }
 ];
 
+/* Photos live in assets/img/sp-*.jpg — 4:5 portraits cropped from the
+   originals. Keep name ↔ photo pairings in step if you swap any out. */
 window.SPEAKERS = [
-  { name: 'Rev. Blesson',       role: 'Main Sessions I & II',  note: 'Saturday morning — the two core sessions on the camp theme.' },
-  { name: 'Rev. Vijay',         role: 'Morning Bible Class',   note: 'Saturday sunrise trek and the opening Bible study.' },
-  { name: 'Rev. Jebin',         role: 'Evening Bible Class & Q&A', note: 'Saturday night — open floor for your questions.' },
-  { name: 'Rev. Matthew Philip', role: 'Closing Devotion',     note: '“Youth Challenges” — the Sunday send-off message.' }
+  { name: 'Jaivee',             role: 'Main Talk',
+    photo: 'assets/img/sp-jaivee.jpg',
+    note: 'The main talk of the camp — the heart of Brand New Day.' },
+
+  { name: 'Rev. Blesson',       role: 'Main Sessions I & II',
+    photo: 'assets/img/sp-blesson.jpg',
+    note: 'Saturday morning — the two core sessions on the camp theme.' },
+
+  { name: 'Rev. Vijay',         role: 'Morning Bible Class',
+    photo: 'assets/img/sp-vijay.jpg',
+    note: 'Saturday sunrise trek and the opening Bible study.' },
+
+  { name: 'Rev. Jebin',         role: 'Evening Bible Class & Q&A',
+    photo: 'assets/img/sp-jebin.jpg',
+    note: 'Saturday night — open floor for your questions.' },
+
+  { name: 'Rev. Matthew Philip', role: 'Closing Devotion',
+    photo: 'assets/img/sp-matthew.jpg',
+    note: '“Youth Challenges” — the Sunday send-off message.' }
 ];
 
 /* ------------------------------------------------------------

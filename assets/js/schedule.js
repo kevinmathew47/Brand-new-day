@@ -174,18 +174,7 @@
     setInterval(markNow, 30000);
 
     /* Speakers */
-    var grid = document.getElementById('speaker-grid');
-    if (grid && window.SPEAKERS) {
-      grid.innerHTML = window.SPEAKERS.map(function (s) {
-        var initials = s.name.replace(/^Rev\.\s*/, '').split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 2);
-        return '<div class="panel brackets speaker">' +
-                 '<div class="speaker__avatar">' + initials + '</div>' +
-                 '<div><div class="speaker__name">' + esc(s.name) + '</div>' +
-                 '<div class="speaker__role">' + esc(s.role) + '</div>' +
-                 '<p>' + esc(s.note) + '</p></div>' +
-               '</div>';
-      }).join('');
-    }
+    window.renderSpeakers(document.getElementById('speaker-grid'));
 
     /* Jump to now */
     var jump = document.getElementById('jump-now');

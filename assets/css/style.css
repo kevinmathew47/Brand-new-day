@@ -1045,23 +1045,96 @@ html:not(.gsap-on) .backdrop-layer.final { display: block; }
   pointer-events: none;
 }
 
-/* speaker (emitted by the page scripts) */
-.speaker { display: flex; gap: 1.1rem; align-items: flex-start; }
-.speaker__avatar {
-  width: 60px; height: 60px; flex: none;
-  display: grid; place-items: center;
+/* ---- The Voices: portrait cards ----
+   Testimonial pattern — photo that scales on hover, a gradient fade into
+   the card, then the line, the name and the role in gradient type. */
+.voices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.voice {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  max-width: 100%;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.voice:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-hot);
+  box-shadow: 0 22px 50px -26px rgba(0, 0, 0, 0.95);
+}
+
+.voice__shot {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(150deg, var(--red-600), var(--red-900));
+  display: grid;
+  place-items: center;
+}
+.voice__shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;   /* keep faces clear of the fade */
+  transition: transform 0.5s var(--ease);
+}
+.voice:hover .voice__shot img { transform: scale(1.05); }
+.voice__initials {
   font-family: var(--f-display);
-  font-size: 1.25rem;
+  font-size: 3rem;
   color: var(--bone);
-  background: linear-gradient(150deg, var(--red-400), var(--red-800));
-  border: 1px solid var(--line-hot);
 }
-.speaker__name { font-family: var(--f-display); font-size: 1.2rem; color: var(--bone); }
-.speaker__role {
-  font-family: var(--f-cond); font-size: 0.74rem; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--red-100); margin: 4px 0 6px;
+/* the photo melts into the card rather than stopping at a hard edge */
+.voice__fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 60%;
+  pointer-events: none;
+  background: linear-gradient(to top, var(--ink), transparent);
 }
-.speaker p { margin: 0; font-size: 0.93rem; color: var(--text-dim); }
+
+.voice__body { padding: 0 1rem 1.1rem; }
+.voice__quote {
+  margin: 0;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(245, 239, 236, 0.16);
+  font-weight: 500;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+.voice__name {
+  margin: 0.9rem 0 0.2rem;
+  font-family: var(--f-cond);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--bone);
+}
+.voice__role {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, #ff8f7d, #f03127 45%, #b4231a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@supports not (-webkit-background-clip: text) {
+  .voice__role { color: var(--red-100); -webkit-text-fill-color: var(--red-100); }
+}
 
 /* checklist */
 .check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }

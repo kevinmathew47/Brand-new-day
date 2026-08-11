@@ -309,7 +309,7 @@
       <p class="eyebrow">Who&rsquo;s Speaking</p>
       <h2>The Voices</h2>
     </div>
-    <div class="grid grid--2" id="speaker-grid"></div>
+    <div class="voices" id="speaker-grid"></div>
   </div>
 </section>
 
@@ -458,18 +458,7 @@
 <script src="assets/js/motion.js"></script>
 <script>
 window.initPage = function () {
-  var grid = document.getElementById('speaker-grid');
-  if (grid && window.SPEAKERS) {
-    grid.innerHTML = window.SPEAKERS.map(function (s) {
-      var initials = s.name.replace(/^Rev\.\s*/, '').split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 2);
-      return '<div class="panel brackets speaker">' +
-               '<div class="speaker__avatar">' + initials + '</div>' +
-               '<div><div class="speaker__name">' + s.name + '</div>' +
-               '<div class="speaker__role">' + s.role + '</div>' +
-               '<p>' + s.note + '</p></div>' +
-             '</div>';
-    }).join('');
-  }
+  window.renderSpeakers(document.getElementById('speaker-grid'));
 
   var cal = document.getElementById('add-cal');
   if (cal) {
