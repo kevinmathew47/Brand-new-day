@@ -1,0 +1,14 @@
+# OS / editor cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# Nothing here is built, but keep these out if tooling ever appears
+node_modules/
+.vercel/
+*.log
