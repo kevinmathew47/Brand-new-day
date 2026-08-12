@@ -179,7 +179,6 @@
     { href: 'index.html#theme',    label: 'Theme',    meta: '2 Corinthians 5:17' },
     { href: 'schedule.html',       label: 'Schedule', meta: 'Three days, hour by hour' },
     { href: 'songs.html',          label: 'Songs',    meta: '12 songs, 4 sessions' },
-    { href: 'gallery.html',        label: 'Gallery',  meta: 'Photos & videos' },
     { href: 'index.html#contact',  label: 'Contact',  meta: 'Talk to the team' }
   ];
 
@@ -385,6 +384,53 @@
                  '<p class="voice__role">' + esc(s.role) + '</p>' +
                '</div>' +
              '</article>';
+    }).join('');
+  };
+
+  /* ---------- Messages from the church ------------------------
+     Portrait crossed by four fading hairlines, with the picture
+     itself masked off at the edges so it sits in the page rather
+     than on it. Falls back to initials if the photo is missing. */
+  window.renderMessages = function (el) {
+    if (!el || !window.MESSAGES) return;
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    el.innerHTML = window.MESSAGES.map(function (m) {
+      var initials = m.name.replace(/^Rev\.\s*/, '').split(/\s+/)
+        .map(function (w) { return w[0]; }).join('').slice(0, 2);
+
+      /* the <img> removes itself if the file isn't there, letting the
+         initials underneath show through instead of a broken icon */
+      var pic = m.photo
+        ? '<img src="' + esc(m.photo) + '" alt="' + esc(m.name) + '" loading="lazy" onerror="this.remove()">'
+        : '';
+
+      return '<figure class="msg" data-reveal>' +
+               '<div class="msg__frame">' +
+                 '<span class="msg__rule msg__rule--v" style="left:0"></span>' +
+                 '<span class="msg__rule msg__rule--v" style="right:0"></span>' +
+                 '<span class="msg__rule msg__rule--h" style="top:0"></span>' +
+                 '<span class="msg__rule msg__rule--h" style="bottom:0"></span>' +
+                 '<span class="msg__portrait">' +
+                   '<span class="msg__initials">' + esc(initials) + '</span>' + pic +
+                 '</span>' +
+               '</div>' +
+               '<figcaption class="msg__body">' +
+                 /* the reference sits above the quote — never inside it,
+                    so the words stay exactly as they were written */
+                 (m.lead ? '<p class="msg__kicker">' + esc(m.lead) + '</p>' : '') +
+                 '<blockquote class="msg__quote">&ldquo;' + esc(m.quote) + '&rdquo;</blockquote>' +
+                 '<div class="msg__cite">' +
+                   '<cite class="msg__name">' + esc(m.name) + '</cite>' +
+                   '<div class="msg__role">' + esc(m.role) + '</div>' +
+                 '</div>' +
+               '</figcaption>' +
+             '</figure>';
     }).join('');
   };
 

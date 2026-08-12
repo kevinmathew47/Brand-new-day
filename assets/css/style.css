@@ -1045,6 +1045,114 @@ html:not(.gsap-on) .backdrop-layer.final { display: block; }
   pointer-events: none;
 }
 
+/* ---- Messages from the church ----
+   Portrait crossed by four hairlines that fade out at both ends, with
+   the picture itself masked off at the edges so it sits in the page
+   rather than on top of it. */
+.messages { display: grid; gap: clamp(3rem, 7vw, 5.5rem); }
+
+.msg {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+@media (min-width: 820px) {
+  .msg { grid-template-columns: auto 1fr; align-items: center; justify-items: start; }
+
+  /* Stagger the two blocks to opposite sides so they read as a step
+     rather than a stacked list. The portrait swaps sides to match, and
+     the copy stays left-aligned either way — ragged-left paragraphs are
+     noticeably harder to read. */
+  .msg { width: min(100%, 860px); }
+  .msg:nth-child(odd)  { margin-right: auto; }
+  .msg:nth-child(even) { margin-left: auto; }
+  .msg:nth-child(even) .msg__frame { order: 2; }
+}
+
+.msg__frame { position: relative; flex: none; }
+.msg__rule {
+  position: absolute;
+  background: rgba(245, 239, 236, 0.22);
+  pointer-events: none;
+}
+.msg__rule--v {
+  top: -55%; bottom: -55%;
+  width: 1px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+}
+.msg__rule--h {
+  left: -55%; right: -55%;
+  height: 1px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 22%, #000 78%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 22%, #000 78%, transparent);
+}
+
+.msg__portrait {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(120px, 24vw, 168px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  /* the portrait dissolves at its edges instead of ending on a hard square */
+  -webkit-mask-image: radial-gradient(circle, #000 58%, transparent 78%);
+          mask-image: radial-gradient(circle, #000 58%, transparent 78%);
+}
+.msg__portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+.msg__initials {
+  font-family: var(--f-display);
+  font-size: 2.4rem;
+  color: var(--red-200);
+}
+
+.msg__body { max-width: 60ch; text-align: center; display: flex; flex-direction: column; }
+@media (min-width: 820px) { .msg__body { text-align: left; } }
+
+/* Stacked, the name belongs directly under the portrait it names —
+   otherwise it ends up marooned below a long paragraph. */
+@media (max-width: 819px) {
+  .msg__cite { order: -1; margin-bottom: 1.4rem; }
+  .msg__cite .msg__name { font-size: 1.15rem; }
+}
+
+.msg__kicker {
+  margin: 0 0 0.9rem;
+  font-family: var(--f-cond);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--red-100);
+}
+.msg__quote {
+  margin: 0 0 1.3rem;
+  font-size: clamp(1.02rem, 1.9vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+.msg__name {
+  font-family: var(--f-cond);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--bone);
+  font-style: normal;
+}
+.msg__role {
+  margin-top: 3px;
+  font-family: var(--f-ui);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
 /* ---- The Voices: portrait cards ----
    Testimonial pattern — photo that scales on hover, a gradient fade into
    the card, then the line, the name and the role in gradient type. */

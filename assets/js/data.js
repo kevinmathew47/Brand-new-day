@@ -61,6 +61,36 @@ window.SCHEDULE = [
   }
 ];
 
+/* ------------------------------------------------------------
+   Messages from the church — shown on the home page, right after
+   "The Message". Vicar first, then the Assistant Vicar.
+
+   `photo` is a square portrait in assets/img/. If the file is not
+   there yet the card falls back to initials rather than showing a
+   broken image, so nothing looks broken while you gather them.
+   ------------------------------------------------------------ */
+window.MESSAGES = [
+  {
+    name: 'Rev. Baby John',
+    role: 'Vicar, Kakkanad Christos Mar Thoma Church',
+    photo: 'assets/img/msg-babyjohn.jpg',
+    lead: 'Youth Camp 2026 · “Brand New Day” · 2 Corinthians 5:17',
+    quote: 'My dear young friends, it is a joy to greet you as you gather at Mar Thoma Meadows for these three days. ' +
+           'Each of you comes carrying something — a fear, a doubt, a failure you would rather forget. Leave it at the Cross, ' +
+           'and walk through the door He has already opened for you. Come with open hearts, listen well, and care for one another. ' +
+           'May the Lord who makes all things new bless you, and may you return home lighted, to lighten.'
+  },
+  {
+    name: 'Rev. Blesson Philip Thomas',
+    role: 'Assistant Vicar, Kakkanad Christos Mar Thoma Church',
+    photo: 'assets/img/msg-blesson.jpg',
+    lead: 'Youth Camp 2026 · “Brand New Day” · 2 Corinthians 5:17',
+    quote: 'Dear young friends, may this Youth Camp be a fresh beginning, renewing our faith, purpose, and commitment in Christ. ' +
+           'As we embrace the “Brand New Day,” let us remember that in Christ, we are a new creation. ' +
+           'May God bless each one of you and make this camp a joyful and transformative experience!'
+  }
+];
+
 /* Photos live in assets/img/sp-*.jpg — 4:5 portraits cropped from the
    originals. Keep name ↔ photo pairings in step if you swap any out. */
 window.SPEAKERS = [
@@ -86,7 +116,10 @@ window.SPEAKERS = [
 ];
 
 /* ------------------------------------------------------------
-   Gallery
+   Gallery — the page is currently removed from the site.
+   This data is kept so it can be restored without redoing the work:
+     git checkout cddfb95 -- gallery.html assets/js/gallery.js
+   then put the nav links back in the three pages and in site.js MENU.
    ------------------------------------------------------------
    To add your own camp photos/videos, drop the files into
    assets/img/gallery/ (or assets/video/) and add an entry here:

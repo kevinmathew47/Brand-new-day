@@ -38,7 +38,6 @@
       <a class="nav__link" href="index.html#theme">Theme</a>
       <a class="nav__link" href="schedule.html">Schedule</a>
       <a class="nav__link" href="songs.html">Songs</a>
-      <a class="nav__link" href="gallery.html">Gallery</a>
       <a class="nav__link" href="index.html#contact">Contact</a>
     </nav>
     <button class="nav-close-btn" aria-label="Menu" aria-expanded="false">
@@ -248,6 +247,18 @@
   </div>
 </section>
 
+<!-- ============================= MESSAGES ============================= -->
+<section class="section section--web section--web--right" id="messages">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">From the Church</p>
+      <h2>Messages</h2>
+      <p class="lead">A word to the camp from our Vicar and Assistant Vicar.</p>
+    </div>
+    <div class="messages" id="message-list"></div>
+  </div>
+</section>
+
 <!-- ============================= FULL-BLEED BREAK ============================= -->
 <section class="plate" style="height:clamp(320px,52vh,560px);border-inline:0" data-parallax-img>
   <img src="assets/img/ph-ridges.jpg" alt="Mist layered over mountain ridges at sunrise">
@@ -396,7 +407,6 @@
 
     <div class="row row--center mt-3" data-reveal>
       <button class="btn btn--ghost" id="add-cal"><svg><use href="#i-calendar"></use></svg> Add camp to calendar</button>
-      <a class="btn btn--dark" href="gallery.html"><svg><use href="#i-camera"></use></svg> Camp gallery</a>
     </div>
   </div>
 </section>
@@ -431,7 +441,6 @@
           <li><a href="index.html#theme">Theme &amp; message</a></li>
           <li><a href="schedule.html">Schedule</a></li>
           <li><a href="songs.html">Songbook</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </div>
       <div>
@@ -458,6 +467,7 @@
 <script src="assets/js/motion.js"></script>
 <script>
 window.initPage = function () {
+  window.renderMessages(document.getElementById('message-list'));
   window.renderSpeakers(document.getElementById('speaker-grid'));
 
   var cal = document.getElementById('add-cal');
