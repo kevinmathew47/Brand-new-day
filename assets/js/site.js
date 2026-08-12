@@ -179,7 +179,6 @@
     { href: 'index.html#theme',    label: 'Theme',    meta: '2 Corinthians 5:17' },
     { href: 'schedule.html',       label: 'Schedule', meta: 'Three days, hour by hour' },
     { href: 'songs.html',          label: 'Songs',    meta: '12 songs, 4 sessions' },
-    { href: 'gallery.html',        label: 'Gallery',  meta: 'Photos & videos' },
     { href: 'index.html#contact',  label: 'Contact',  meta: 'Talk to the team' }
   ];
 
@@ -426,7 +425,7 @@
                     so the words stay exactly as they were written */
                  (m.lead ? '<p class="msg__kicker">' + esc(m.lead) + '</p>' : '') +
                  '<blockquote class="msg__quote">&ldquo;' + esc(m.quote) + '&rdquo;</blockquote>' +
-                 '<div>' +
+                 '<div class="msg__cite">' +
                    '<cite class="msg__name">' + esc(m.name) + '</cite>' +
                    '<div class="msg__role">' + esc(m.role) + '</div>' +
                  '</div>' +

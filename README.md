@@ -23,7 +23,6 @@ host (GitHub Pages, Netlify, Firebase Hosting, cPanel) — there is nothing to c
 | `index.html` | Poster hero, countdown, the theme, the message, songbook + timetable cards, speakers, what to bring, contact |
 | `schedule.html` | Day tabs (Fri/Sat/Sun), colour-coded timeline, type filters, live "now" marker, per-item calendar download |
 | `songs.html` | All 12 songs, search across titles *and* lyrics, session filters, full-screen reader with presentation mode, printable songbook |
-| `gallery.html` | Masonry photo/video grid, filters, lightbox, phase-2 placeholder |
 
 ## Editing content
 
@@ -32,8 +31,8 @@ Everything editable lives in two data files — no HTML changes needed.
 **`assets/js/data.js`**
 - `SCHEDULE` — the three days and every timeline item
 - `SPEAKERS` — the speaker cards
-- `GALLERY` — photos and videos
-- `GALLERY_PLACEHOLDERS` — how many "coming after camp" tiles to show
+- `MESSAGES` — the Vicar's and Assistant Vicar's messages
+- `GALLERY` / `GALLERY_PLACEHOLDERS` — dormant, see below
 
 **`assets/js/songs-data.js`**
 - `SONGS` — all 12 songs, block by block (`verse` / `chorus` / `bridge` / `note`)
@@ -41,20 +40,16 @@ Everything editable lives in two data files — no HTML changes needed.
 
 Camp name, dates and venue are in `window.CAMP` at the top of `assets/js/site.js`.
 
-### Adding photos and videos
+### The gallery page is currently removed
 
-Put files in `assets/img/gallery/` (or `assets/video/`), then add to `GALLERY`:
+Taken off the site until there are real camp photos. Nothing was thrown away —
+the data still sits in `data.js`, and the page comes back with:
 
-```js
-{ type: 'photo', src: 'assets/img/gallery/campfire.jpg',
-  cap: 'Campfire night', tag: 'Fellowship', size: 'tall' }
-
-{ type: 'video', src: 'assets/video/talent-night.mp4',
-  poster: 'assets/img/gallery/talent-night.jpg',
-  cap: 'Talent night', tag: 'Fun' }
+```bash
+git checkout cddfb95 -- gallery.html assets/js/gallery.js
 ```
 
-`size` is `'tall'`, `'wide'`, or omitted. Videos preview on hover and play in the lightbox.
+then re-add the nav link to the three pages and to `MENU` in `site.js`.
 
 ## Animation
 
@@ -136,12 +131,11 @@ the source posters in `F:\Camp2026\`.
 
 The gallery is deliberately data-driven so the planned "find my photos" feature can be
 added without touching the rest of the site: each item is one object in `GALLERY`, so a
-`faces: [...]` field plus a matching step in `assets/js/gallery.js` is all the grid needs.
-`gallery.html` already carries the phase-2 notice.
+`faces: [...]` field plus a matching step in the gallery script is all the grid needs.
+The page is currently removed — restore it first (see above).
 
 ## Keyboard shortcuts
 
 **Song reader** — `←` `→` previous/next song · `+` `−` text size · `P` presentation mode · `Esc` close
-**Gallery lightbox** — `←` `→` previous/next · `Esc` close
 
-Both also respond to swipe on touch screens.
+Also responds to swipe on touch screens.

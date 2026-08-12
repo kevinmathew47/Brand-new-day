@@ -1108,8 +1108,15 @@ html:not(.gsap-on) .backdrop-layer.final { display: block; }
   color: var(--red-200);
 }
 
-.msg__body { max-width: 60ch; text-align: center; }
+.msg__body { max-width: 60ch; text-align: center; display: flex; flex-direction: column; }
 @media (min-width: 820px) { .msg__body { text-align: left; } }
+
+/* Stacked, the name belongs directly under the portrait it names —
+   otherwise it ends up marooned below a long paragraph. */
+@media (max-width: 819px) {
+  .msg__cite { order: -1; margin-bottom: 1.4rem; }
+  .msg__cite .msg__name { font-size: 1.15rem; }
+}
 
 .msg__kicker {
   margin: 0 0 0.9rem;

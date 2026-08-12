@@ -63,7 +63,7 @@ window.SCHEDULE = [
 
 /* ------------------------------------------------------------
    Messages from the church — shown on the home page, right after
-   "The Message". Vicar first, then the Co-Minister.
+   "The Message". Vicar first, then the Assistant Vicar.
 
    `photo` is a square portrait in assets/img/. If the file is not
    there yet the card falls back to initials rather than showing a
@@ -82,7 +82,7 @@ window.MESSAGES = [
   },
   {
     name: 'Rev. Blesson Philip Thomas',
-    role: 'Co-Minister, Kakkanad Christos Mar Thoma Church',
+    role: 'Assistant Vicar, Kakkanad Christos Mar Thoma Church',
     photo: 'assets/img/msg-blesson.jpg',
     lead: 'Youth Camp 2026 · “Brand New Day” · 2 Corinthians 5:17',
     quote: 'Dear young friends, may this Youth Camp be a fresh beginning, renewing our faith, purpose, and commitment in Christ. ' +
@@ -116,7 +116,10 @@ window.SPEAKERS = [
 ];
 
 /* ------------------------------------------------------------
-   Gallery
+   Gallery — the page is currently removed from the site.
+   This data is kept so it can be restored without redoing the work:
+     git checkout cddfb95 -- gallery.html assets/js/gallery.js
+   then put the nav links back in the three pages and in site.js MENU.
    ------------------------------------------------------------
    To add your own camp photos/videos, drop the files into
    assets/img/gallery/ (or assets/video/) and add an entry here:
