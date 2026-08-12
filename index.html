@@ -248,6 +248,18 @@
   </div>
 </section>
 
+<!-- ============================= MESSAGES ============================= -->
+<section class="section section--web section--web--right" id="messages">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">From the Church</p>
+      <h2>Messages</h2>
+      <p class="lead">A word to the camp from our Vicar and Co-Minister.</p>
+    </div>
+    <div class="messages" id="message-list"></div>
+  </div>
+</section>
+
 <!-- ============================= FULL-BLEED BREAK ============================= -->
 <section class="plate" style="height:clamp(320px,52vh,560px);border-inline:0" data-parallax-img>
   <img src="assets/img/ph-ridges.jpg" alt="Mist layered over mountain ridges at sunrise">
@@ -458,6 +470,7 @@
 <script src="assets/js/motion.js"></script>
 <script>
 window.initPage = function () {
+  window.renderMessages(document.getElementById('message-list'));
   window.renderSpeakers(document.getElementById('speaker-grid'));
 
   var cal = document.getElementById('add-cal');
