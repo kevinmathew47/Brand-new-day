@@ -82,7 +82,7 @@ window.MESSAGES = [
   },
   {
     name: 'Rev. Blesson Philip Thomas',
-    role: 'Assistant Vicar, Kakkanad Christos Mar Thoma Church',
+    role: 'Co-Minister, Kakkanad Christos Mar Thoma Church',
     photo: 'assets/img/msg-blesson.jpg',
     lead: 'Youth Camp 2026 · “Brand New Day” · 2 Corinthians 5:17',
     quote: 'Dear young friends, may this Youth Camp be a fresh beginning, renewing our faith, purpose, and commitment in Christ. ' +
