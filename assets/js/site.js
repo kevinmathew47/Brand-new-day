@@ -92,6 +92,17 @@
     '<symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">',
     '<path d="M7 8.5V3.5h10v5"/><rect x="3.5" y="8.5" width="17" height="7.5" rx="1.6"/><path d="M7 14h10v6.5H7z"/></symbol>',
 
+    '<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">',
+    '<path d="M12 20.4C6.9 17.2 3.4 14.1 3.4 10.2A4.6 4.6 0 0 1 12 7.7a4.6 4.6 0 0 1 8.6 2.5c0 3.9-3.5 7-8.6 10.2z"/></symbol>',
+
+    '<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">',
+    '<rect x="3.4" y="3.4" width="7.2" height="7.2" rx="1.4"/><rect x="13.4" y="3.4" width="7.2" height="7.2" rx="1.4"/>',
+    '<rect x="3.4" y="13.4" width="7.2" height="7.2" rx="1.4"/><rect x="13.4" y="13.4" width="7.2" height="7.2" rx="1.4"/></symbol>',
+
+    // the AR cube: a box you can walk around
+    '<symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">',
+    '<path d="M12 2.7 20.5 7v10L12 21.3 3.5 17V7z"/><path d="m3.5 7 8.5 4.6L20.5 7M12 11.6v9.7"/></symbol>',
+
     '<symbol id="i-face" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">',
     '<path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/>',
     '<circle cx="9.4" cy="10.4" r="1"/><circle cx="14.6" cy="10.4" r="1"/><path d="M9 14.6c1.8 1.5 4.2 1.5 6 0"/></symbol>',
@@ -179,6 +190,7 @@
     { href: 'index.html#theme',    label: 'Theme',    meta: '2 Corinthians 5:17' },
     { href: 'schedule.html',       label: 'Schedule', meta: 'Three days, hour by hour' },
     { href: 'songs.html',          label: 'Songs',    meta: '12 songs, 4 sessions' },
+    { href: 'gallery.html',        label: 'Gallery',  meta: 'The camp in 3D' },
     { href: 'index.html#contact',  label: 'Contact',  meta: 'Talk to the team' }
   ];
 

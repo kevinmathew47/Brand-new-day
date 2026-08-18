@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "camp-site",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5173"],
-      "port": 5173
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4321", "."],
+      "port": 4321
     }
   ]
 }
